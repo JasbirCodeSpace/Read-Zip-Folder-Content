@@ -12,16 +12,18 @@
     <script src="jszip/jszip.min.js"></script>
     <script src="jszip/jszip-utils.min.js"></script>
     <script src="jszip/jszip-utils.js"></script>
-  </head>
-  <body>
-    <div class="table-responsive" id="table-data-preview"></div>
-    <!-- data tables -->
+        <!-- data tables -->
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    
-    <script>
-      function readZIPFile(url){
+  </head>
+  <body>
+    <div class="table-responsive" id="table-data-preview"></div>
+
+
+    <script type="text/javascript">
+    	$(document).ready(function () {
+    	function readZIPFile(url){
 
 
                 var xhr = new XMLHttpRequest();
@@ -115,6 +117,15 @@ return content;
 });
 return ;
 }
+
+readZIPFile('https://s3-ap-southeast-1.amazonaws.com/www.mlcloudstudio.com/ZipFolder.zip');
+setInterval(function(){ try{            if($.fn.dataTable.isDataTable("table.source-display")==false){
+              $('table.source-display').DataTable({
+                responsive:true
+              }); 
+            }}catch(exception){} }, 1000);
+
+});
     </script>
   </body>
 </html>
